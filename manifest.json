@@ -6,7 +6,7 @@
   "js": "dist/index.js",
   "css": "dist/index.css",
   "author": "iiimabbie",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "homePage": "https://github.com/iiimabbie/ST-StatusTracking",
   "auto_update": true,
   "i18n": {
