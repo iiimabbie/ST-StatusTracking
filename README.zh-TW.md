@@ -32,13 +32,6 @@
 
 ## 開發
 
-原始碼位於 `dev`；`main` 存放建置後的擴充功能。使用 Node.js 22 與 pnpm 10 執行：
-
-```sh
-pnpm install
-pnpm build
-```
-
-建置工作流程會將每次 `dev` 建置發布到 `testing`，並在提交訊息包含發布標記時發布到 `main`。
+擴充功能直接使用 JavaScript ES 模組與 CSS，不需要建置或安裝套件。
 
 請至 [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues) 回報問題。本專案採用 [Aladdin Free Public License（AFPL）](LICENSE)。

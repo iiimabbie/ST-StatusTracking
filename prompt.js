@@ -1,10 +1,3 @@
-import type { Field, FixedFieldsEnabled } from '@/type/settings';
-import { logger } from '@/utils/logger';
-import { eventSource, event_types, extension_prompt_roles, extension_prompt_types, setExtensionPrompt } from '@sillytavern/script';
-
-/**
- * 預設 prompt 模板（繁體中文）
- */
 export const DEFAULT_PROMPT_ZH_TW = {
   time: '當前時間, 格式為 yyyy年MM月dd日．星期．HH時mm分',
   place: '當前劇情地點, 格式為 地點層1．地點層2．地點層3',
@@ -44,19 +37,7 @@ export const DEFAULT_PROMPT_EN = {
 /**
  * 根據語言和自訂 prompt 生成固定欄位的 prompt 字串
  */
-export function buildFixedPrompt(
-  language: 'zh-TW' | 'zh-CN' | 'en',
-  fixedFieldsEnabled: FixedFieldsEnabled,
-  customPrompt?: {
-    time?: string;
-    place?: string;
-    weather?: string;
-    newsType?: string;
-    newsTitle?: string;
-    newsContent?: string;
-    notes?: string;
-  }
-): string {
+export function buildFixedPrompt(language, fixedFieldsEnabled, customPrompt) {
   const defaultPrompt = language === 'en'
     ? DEFAULT_PROMPT_EN
     : language === 'zh-CN'
@@ -71,7 +52,7 @@ export function buildFixedPrompt(
       : '狀態欄:\n在 所有文字 結束之後必須生成以下代碼塊(含)狀態欄:\n**與上一輪不允許相同, 並且使用中文輸出**';
 
   // 根據開關決定要輸出哪些欄位
-  const lines: string[] = [];
+  const lines = [];
 
   if (fixedFieldsEnabled.time) {
     lines.push(`time: \${${prompt.time || defaultPrompt.time}}`);
@@ -102,26 +83,7 @@ ${lines.join('\n')}`;
  * @param customPrompt 自訂的 prompt（可選）
  * @returns 完整的 prompt 字串
  */
-export function generateStatusPrompt(
-  fields: Field[],
-  language: 'zh-TW' | 'zh-CN' | 'en' = 'zh-TW',
-  fixedFieldsEnabled: FixedFieldsEnabled = {
-    time: true,
-    place: true,
-    weather: true,
-    news: true,
-    notes: true,
-  },
-  customPrompt?: {
-    time?: string;
-    place?: string;
-    weather?: string;
-    newsType?: string;
-    newsTitle?: string;
-    newsContent?: string;
-    notes?: string;
-  }
-): string {
+export function generateStatusPrompt(fields, language = 'zh-TW', fixedFieldsEnabled = { time: true, place: true, weather: true, news: true, notes: true }, customPrompt) {
   const fixedPrompt = buildFixedPrompt(language, fixedFieldsEnabled, customPrompt);
 
   // 動態欄位 prompt
@@ -145,102 +107,3 @@ export function generateStatusPrompt(
   return fullPrompt;
 }
 
-// 儲存當前的配置
-let currentFields: Field[] = [];
-let currentLanguage: 'zh-TW' | 'zh-CN' | 'en' = 'zh-TW';
-let currentFixedFieldsEnabled: FixedFieldsEnabled = {
-  time: true,
-  place: true,
-  weather: true,
-  news: true,
-  notes: true,
-};
-let currentCustomPrompt: {
-  time?: string;
-  place?: string;
-  weather?: string;
-  newsType?: string;
-  newsTitle?: string;
-  newsContent?: string;
-  notes?: string;
-} | undefined = undefined;
-let isEnabled = false;
-
-/**
- * 啟用狀態欄 prompt 注入
- * @param fields 用戶自訂的欄位列表
- * @param language 語言
- * @param fixedFieldsEnabled 固定欄位開關
- * @param customPrompt 自訂 prompt
- */
-export function enablePromptInjection(
-  fields: Field[],
-  language: 'zh-TW' | 'zh-CN' | 'en' = 'zh-TW',
-  fixedFieldsEnabled: FixedFieldsEnabled = {
-    time: true,
-    place: true,
-    weather: true,
-    news: true,
-    notes: true,
-  },
-  customPrompt?: {
-    time?: string;
-    place?: string;
-    weather?: string;
-    newsType?: string;
-    newsTitle?: string;
-    newsContent?: string;
-    notes?: string;
-  }
-): void {
-  currentFields = fields;
-  currentLanguage = language;
-  currentFixedFieldsEnabled = fixedFieldsEnabled;
-  currentCustomPrompt = customPrompt;
-  isEnabled = true;
-  logger.log('[promptGenerator] 啟用 Prompt 注入');
-}
-
-/**
- * 停用狀態欄 prompt 注入
- */
-export function disablePromptInjection(): void {
-  isEnabled = false;
-  logger.log('[promptGenerator] 停用 Prompt 注入');
-
-  // 清除所有注入的 prompt
-  setExtensionPrompt('status-tracking-prompt', '', extension_prompt_types.IN_CHAT, 0, false);
-}
-
-/**
- * 在每次生成開始時注入 prompt（由 GENERATION_STARTED 事件觸發）
- */
-function onGenerationStarted(): void {
-  if (!isEnabled) {
-    setExtensionPrompt('status-tracking-prompt', '', extension_prompt_types.IN_CHAT, 0, false);
-    return;
-  }
-
-  const prompt = generateStatusPrompt(currentFields, currentLanguage, currentFixedFieldsEnabled, currentCustomPrompt);
-  logger.log('[promptGenerator] 注入 Prompt 到對話');
-
-  // 注入 prompt 到深度 0（最後一條訊息之後）
-  setExtensionPrompt(
-    'status-tracking-prompt',           // 唯一 key
-    prompt,                              // prompt 內容
-    extension_prompt_types.IN_CHAT,     // 在對話中插入
-    0,                                   // 深度 0（最後一條訊息後）
-    false,                               // 不參與 world info 掃描
-    extension_prompt_roles.SYSTEM       // SYSTEM 角色
-  );
-}
-
-/**
- * 初始化 prompt 注入系統
- */
-export function initPromptInjection(): void {
-  logger.log('[promptGenerator] 初始化 Prompt 注入系統');
-
-  // 監聽生成開始事件
-  eventSource.on(event_types.GENERATION_STARTED, onGenerationStarted);
-}

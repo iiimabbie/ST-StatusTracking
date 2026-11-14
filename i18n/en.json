@@ -88,7 +88,7 @@
   "確定要載入配置": "Load preset",
   "這將覆蓋目前的欄位、Prompt、樣式等設定。": "This will overwrite current fields, prompts, styles, etc.",
   "已載入配置": "Preset loaded",
-  "已儲存配置": "Preset saved",
+  "配置已儲存": "Preset saved",
   "確定要刪除配置": "Delete preset",
   "已刪除配置": "Preset deleted",
   "切換配置": "Switch Preset",
@@ -100,5 +100,6 @@
   "確定要重置為角色卡配置": "Reset to character preset",
   "這將清除此聊天窗的自訂設定。": "This will clear this chat's custom settings.",
   "已重置為角色卡配置": "Reset to character preset",
-  "找不到角色卡配置": "Character preset not found"
+  "找不到角色卡配置": "Character preset not found",
+  "確定要覆寫此配置嗎？": "Overwrite this preset?"
 }

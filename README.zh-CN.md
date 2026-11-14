@@ -32,13 +32,6 @@
 
 ## 开发
 
-源代码位于 `dev`；`main` 存放构建后的扩展。使用 Node.js 22 和 pnpm 10 运行：
-
-```sh
-pnpm install
-pnpm build
-```
-
-构建工作流会将每次 `dev` 构建发布到 `testing`，并在提交消息包含发布标记时发布到 `main`。
+扩展直接使用 JavaScript ES 模块与 CSS，无需构建或安装依赖。
 
 请到 [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues) 反馈问题。本项目采用 [Aladdin Free Public License（AFPL）](LICENSE)。

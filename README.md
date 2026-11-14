@@ -32,13 +32,6 @@ A SillyTavern extension that requests status information in AI replies and displ
 
 ## Development
 
-Source is on `dev`; `main` contains the built extension. With Node.js 22 and pnpm 10, run:
-
-```sh
-pnpm install
-pnpm build
-```
-
-The build workflow publishes every `dev` build to `testing` and publishes to `main` when the commit message contains a release marker.
+The extension uses JavaScript ES modules and CSS directly; no build step or package installation is required.
 
 Report problems in [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues). The project uses the [Aladdin Free Public License (AFPL)](LICENSE).
