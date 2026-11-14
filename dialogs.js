@@ -1,6 +1,6 @@
 import { Popup, POPUP_RESULT, POPUP_TYPE } from '../../../../scripts/popup.js';
 import { settings, defaultFields, createPreset, buildPresetData, presetDataToSettings, uuid } from './settings.js';
-import { DEFAULT_PROMPT_EN, DEFAULT_PROMPT_ZH_TW } from './prompt.js';
+import { defaultPromptForLanguage } from './prompt.js';
 import { changed, t, hasChatSettings, clearChatSettings, character, saveCharacter } from './index.js';
 import { escapeHTML as esc } from './ui.js';
 
@@ -12,7 +12,7 @@ const clone = value => JSON.parse(JSON.stringify(value));
 export async function openFieldSettings() {
   let fields = clone(settings.fields);
   const enabled = { ...settings.fixed_fields_enabled };
-  const defaults = settings.language === 'en' ? DEFAULT_PROMPT_EN : DEFAULT_PROMPT_ZH_TW;
+  const defaults = defaultPromptForLanguage(settings.language);
   const prompts = Object.fromEntries(Object.keys(defaults).map(key => [key, settings.custom_prompt?.[key] || defaults[key]]));
   const root = document.createElement('div');
   root.innerHTML = `<h3>${esc(t('欄位設定'))}</h3><div class="field-list-wrapper"><div class="tabs-container"><div class="tab-button active" data-tab="custom">${esc(t('自訂欄位設定'))}</div><div class="tab-button" data-tab="fixed">${esc(t('固定欄位設定'))}</div></div>
@@ -47,8 +47,8 @@ export async function openFieldSettings() {
     const action = e.target.closest('[data-action]')?.dataset.action;
     if (action === 'add') { fields.push({ id: uuid(), enabled: true, name: '', description: '', order: fields.length, type: 'number' }); renderFields(); }
     if (action === 'delete') { fields = fields.filter(f => f.id !== e.target.closest('[data-id]').dataset.id); fields.forEach((f, i) => { f.order = i; }); renderFields(); }
-    if (action === 'reset-fields' && await confirm('確定要恢復預設欄位嗎？')) { fields = defaultFields(); renderFields(); }
-    if (action === 'reset-prompt' && await confirm('確定要恢復預設 Prompt 嗎？')) { Object.assign(prompts, defaults); renderFixed(); }
+    if (action === 'reset-fields' && await confirm(esc(t('確定要恢復預設欄位嗎？')))) { fields = defaultFields(settings.language); renderFields(); }
+    if (action === 'reset-prompt' && await confirm(esc(t('確定要恢復預設 Prompt 嗎？')))) { Object.assign(prompts, defaults); renderFixed(); }
   });
   root.addEventListener('input', e => {
     if (e.target.dataset.prompt) prompts[e.target.dataset.prompt] = e.target.value;
@@ -72,7 +72,7 @@ export async function openFieldSettings() {
   $(list).sortable('destroy');
   if (result !== POPUP_RESULT.AFFIRMATIVE) return;
   const custom = {};
-  for (const key of Object.keys(defaults)) if (prompts[key]?.trim() && prompts[key] !== defaults[key]) custom[key] = prompts[key].trim();
+  for (const key of Object.keys(defaults)) if (prompts[key]?.trim() && prompts[key].trim() !== defaults[key]) custom[key] = prompts[key].trim();
   settings.fields = fields;
   settings.fixed_fields_enabled = enabled;
   settings.custom_prompt = Object.keys(custom).length ? custom : undefined;
@@ -180,9 +180,10 @@ export async function openPanelSettings() {
     }
     if (action === 'reset-card') {
       const name = character()?.name || '角色';
+      const displayName = character()?.name || t('角色');
       const card = settings.presets.find(p => p.id.startsWith('__fromCard_') && p.name === name);
       if (!card) { toastr.warning(t('找不到角色卡配置'), t('提示')); return; }
-      if (!await confirm(`${esc(t('確定要重置為角色卡配置'))}「${esc(name)}」${esc(t('嗎？'))}<br>${esc(t('這將清除此聊天窗的自訂設定。'))}`)) return;
+      if (!await confirm(`${esc(t('確定要重置為角色卡配置'))}「${esc(displayName)}」${esc(t('嗎？'))}<br>${esc(t('這將清除此聊天窗的自訂設定。'))}`)) return;
       clearChatSettings(); Object.assign(settings, presetDataToSettings(card.data)); selectedPresetId = card.id;
       syncFromSettings(); changed(); renderSelect(); root.querySelector('.chat-setting').hidden = true;
       toastr.success(t('已重置為角色卡配置'), t('成功'));

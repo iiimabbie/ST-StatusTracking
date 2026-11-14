@@ -34,15 +34,15 @@ export const DEFAULT_PROMPT_EN = {
   notes: '\<char\>\'s current notes or to-do list on phone, presented in bullet points, each item within 30 words, as if writing for himself/herself',
 };
 
+export function defaultPromptForLanguage(language) {
+  return language === 'en' ? DEFAULT_PROMPT_EN : language === 'zh-CN' ? DEFAULT_PROMPT_ZH_CN : DEFAULT_PROMPT_ZH_TW;
+}
+
 /**
  * 根據語言和自訂 prompt 生成固定欄位的 prompt 字串
  */
 export function buildFixedPrompt(language, fixedFieldsEnabled, customPrompt) {
-  const defaultPrompt = language === 'en'
-    ? DEFAULT_PROMPT_EN
-    : language === 'zh-CN'
-      ? DEFAULT_PROMPT_ZH_CN
-      : DEFAULT_PROMPT_ZH_TW;
+  const defaultPrompt = defaultPromptForLanguage(language);
   const prompt = customPrompt || defaultPrompt;
 
   const header = language === 'en'

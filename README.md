@@ -1,4 +1,4 @@
-[English](README.md) | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md)
+[English](README.md) | [Traditional Chinese](README.zh-TW.md) | [Simplified Chinese](README.zh-CN.md)
 
 # Status Tracking
 
@@ -11,24 +11,24 @@ A SillyTavern extension that requests status information in AI replies and displ
 
 - Track time, location, weather, news and notes; enable fixed fields and edit their prompts individually.
 - Add, edit, enable, delete and drag to reorder text or number fields. Number fields use a gradient progress bar with configurable colors.
-- Show the latest valid status found while scanning AI messages backwards, including the selected swipe.
-- Choose the panel side and interface language, customize CSS, save and switch presets, export or import settings, and save field, prompt and style settings to a character card.
+- Scan AI messages backwards and display the latest valid status, including the selected swipe.
+- Choose the panel position and interface language, customize CSS, manage presets, import and export settings, and save fields, prompts and styles to a character card.
 
 ## Installation
 
-1. In SillyTavern, open Extensions and choose to install an extension.
+1. In SillyTavern, open **Extensions** and select **Install extension**.
 2. Enter `https://github.com/iiimabbie/ST-StatusTracking` and install it.
 3. Reload SillyTavern.
 
 ## Usage
 
-1. In the extension settings, enable “啟用狀態面板”. The default interface language is Traditional Chinese; open “擴充設定” in the panel and change “語言” to “English” if needed. The toggle then reads “Enable Status Panel”.
-2. In the panel, open “Field Settings”. Use “Fixed Fields Settings” to select fixed fields and edit their prompts, or “Custom Fields Settings” to add fields. Confirm the dialog to save changes.
+1. Enable **Enable Status Panel** in the extension settings. On first install, the interface and default prompts follow SillyTavern's language: Traditional Chinese, Simplified Chinese, or English for other locales. Change the language under **Extension Settings** → **Language** in the panel. Existing custom prompts and fields are retained when changing the language.
+2. Open **Field Settings**. Use **Fixed Fields Settings** to select fixed fields and edit their prompts, or **Custom Fields Settings** to add fields. Confirm the dialog to save changes. **Restore Defaults** uses the selected language.
 3. Send a message. When the panel is enabled, the extension injects a prompt asking the AI to append a `myst` block. The panel displays parsed data when a valid block is available; output depends on the AI.
-4. Open “Extension Settings” to adjust “Panel Position”, “Language”, “Progress Bar Colors” or “Custom CSS”, and confirm the dialog. Use “Save as New Preset” and “Switch Preset” to manage presets; with a preset selected, “Save” overwrites it and “Delete Preset” removes it. Use “Export All Settings”, “Import All Settings” and “Save to Character” for sharing and backup.
+4. Open **Extension Settings** to adjust **Panel Position**, **Language**, **Progress Bar Colors**, or **Custom CSS**, then confirm the dialog. Use **Save as New Preset** and **Switch Preset** to manage presets; with a preset selected, **Save** overwrites it and **Delete Preset** removes it. Use **Export All Settings**, **Import All Settings**, and **Save to Character** for backup and sharing.
 
 > [!NOTE]
-> Importing a backup or switching presets can overwrite current field, prompt and style settings. Character-card data excludes interface preferences such as panel position and debug mode.
+> Importing a backup or switching presets can overwrite current fields, prompts and styles. Character-card data excludes interface preferences such as panel position and debug mode.
 
 ## Development
 

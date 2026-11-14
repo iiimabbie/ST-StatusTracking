@@ -29,6 +29,9 @@ export function initUI() {
 
 export function renderUI() {
   if (!panel) return;
+  drawer.querySelector('.inline-drawer-header b').textContent = t('狀態追蹤');
+  drawer.querySelector('label[for="status-tracking_enabled"]').textContent = t('啟用狀態面板');
+  drawer.querySelector('label[for="status-tracking_debug"]').textContent = t('Debug 模式');
   panel.innerHTML = '';
   if (!settings.panel_enabled) return;
   const data = currentStatus();

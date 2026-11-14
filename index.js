@@ -4,7 +4,7 @@ import { Popup, POPUP_RESULT, POPUP_TYPE } from '../../../../scripts/popup.js';
 import { settings, saveSettings, buildPresetData, presetDataToSettings, createPreset } from './settings.js';
 import { generateStatusPrompt } from './prompt.js';
 import { parseLatestMessage } from './status.js';
-import { initUI, renderUI } from './ui.js';
+import { initUI, renderUI, escapeHTML } from './ui.js';
 
 const context = () => SillyTavern.getContext();
 const chatKey = 'status_tracking_settings';
@@ -75,6 +75,7 @@ async function loadChat() {
     return;
   }
   const name = character()?.name || '角色';
+  const displayName = character()?.name || t('角色');
   const cardPreset = settings.presets.find(p => p.id.startsWith('__fromCard_') && p.name === name);
   if (cardPreset) {
     Object.assign(settings, presetDataToSettings(cardPreset.data));
@@ -83,13 +84,13 @@ async function loadChat() {
   }
   const card = character()?.data?.extensions?.st_status_tracking;
   if (!card || settings.presets.some(p => p.id === `__declined_${ctx.characterId}`)) return;
-  const answer = await new Popup(`偵測到角色「${name}」的角色卡中包含狀態追蹤設定。<br>是否要載入這些設定？<br>（這將覆蓋目前的欄位、Prompt、樣式等設定）`, POPUP_TYPE.CONFIRM).show();
+  const answer = await new Popup(escapeHTML(t('偵測到角色「{name}」的角色卡中包含狀態追蹤設定。\n是否要載入這些設定？\n（這將覆蓋目前的欄位、Prompt、樣式等設定）')).replace('{name}', escapeHTML(displayName)).replaceAll('\n', '<br>'), POPUP_TYPE.CONFIRM).show();
   if (answer === POPUP_RESULT.AFFIRMATIVE) {
     Object.assign(settings, presetDataToSettings(card));
     const preset = createPreset(name);
     preset.id = `__fromCard_${preset.id}`;
     settings.presets.push(preset);
-    toastr.success(`已載入角色「${name}」的設定`, '成功');
+    toastr.success(t('已載入角色「{name}」的設定').replace('{name}', displayName), t('成功'));
   } else {
     const marker = createPreset(name);
     marker.id = `__declined_${ctx.characterId}`;

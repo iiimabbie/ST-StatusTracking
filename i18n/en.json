@@ -101,5 +101,9 @@
   "這將清除此聊天窗的自訂設定。": "This will clear this chat's custom settings.",
   "已重置為角色卡配置": "Reset to character preset",
   "找不到角色卡配置": "Character preset not found",
-  "確定要覆寫此配置嗎？": "Overwrite this preset?"
+  "確定要覆寫此配置嗎？": "Overwrite this preset?",
+  "確定要恢復預設欄位嗎？": "Restore the default fields?",
+  "確定要恢復預設 Prompt 嗎？": "Restore the default prompts?",
+  "偵測到角色「{name}」的角色卡中包含狀態追蹤設定。\n是否要載入這些設定？\n（這將覆蓋目前的欄位、Prompt、樣式等設定）": "The character card for “{name}” contains status tracking settings.\nLoad these settings?\n(This will overwrite the current fields, prompts, styles, and related settings.)",
+  "已載入角色「{name}」的設定": "Loaded settings for “{name}”"
 }
