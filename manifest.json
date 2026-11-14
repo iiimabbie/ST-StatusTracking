@@ -5,9 +5,9 @@
   "optional": [],
   "js": "dist/index.js",
   "css": "dist/index.css",
-  "author": "mingyu",
-  "version": "0.6.1",
-  "homePage": "https://github.com/lilminzyu/ST-StatusTracking",
+  "author": "iiimabbie",
+  "version": "0.6.2",
+  "homePage": "https://github.com/iiimabbie/ST-StatusTracking",
   "auto_update": true,
   "i18n": {
     "en": "i18n/en.json",
