@@ -31,10 +31,10 @@
 
         <!-- 連結區域 -->
         <div class="links-container">
-          <a href="https://github.com/lilminzyu" target="_blank" class="menu_button link-button">
+          <a href="https://github.com/iiimabbie" target="_blank" class="menu_button link-button">
             <i class="fa-brands fa-github"></i> GitHub
           </a>
-          <a href="https://discord.gg/NFmesS7ubb" target="_blank" class="menu_button link-button">
+          <a href="https://discord.gg/pWynG3aCgs" target="_blank" class="menu_button link-button">
             <i class="fa-brands fa-discord"></i> Discord
           </a>
         </div>

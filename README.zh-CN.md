@@ -1,0 +1,44 @@
+[English](README.md) | [繁體中文](README.zh-TW.md) | [简体中文](README.zh-CN.md)
+
+# Status Tracking
+
+[![版本](https://img.shields.io/github/v/tag/iiimabbie/ST-StatusTracking?label=version)](https://github.com/iiimabbie/ST-StatusTracking/tags)
+[![许可：AFPL](https://img.shields.io/badge/license-AFPL-blue)](LICENSE)
+
+这是一个 SillyTavern 扩展，会要求 AI 在回复中提供状态信息，并显示在可折叠的侧边面板中。扩展读取 `myst` 代码块中的 YAML，并在渲染消息时隐藏这些代码块。
+
+## 功能
+
+- 追踪时间、地点、天气、新鲜事和备忘录；可分别启用固定字段并编辑其提示词。
+- 添加、编辑、启用、删除文本或数字字段，并拖动排序。数字字段使用渐变进度条，颜色可以自定义。
+- 从最新的 AI 消息向前搜索，显示最近找到的有效状态，并读取当前选中的回复版本。
+- 选择面板位置和界面语言、自定义 CSS、保存及切换配置、导出或导入设置，并将字段、提示词和样式设置保存到角色卡。
+
+## 安装
+
+1. 在 SillyTavern 打开扩展，选择安装扩展。
+2. 输入 `https://github.com/iiimabbie/ST-StatusTracking` 并安装。
+3. 重新加载 SillyTavern。
+
+## 使用方法
+
+1. 在扩展设置中打开「啟用狀態面板」。默认界面语言为繁体中文；打开面板中的「擴充設定」，将「語言」改为「簡體中文」。
+2. 在面板中打开「字段设置」。使用「固定字段设置」选择固定字段并编辑提示词，或在「自定义字段设置」添加字段。确认对话框以保存更改。
+3. 发送消息。面板启用时，扩展会注入提示词，要求 AI 在回复末尾加入 `myst` 代码块。找到有效代码块时，面板会显示解析出的数据；输出取决于 AI。
+4. 打开「扩展设置」调整「侧边栏位置」、「语言」、「进度条颜色」或「自定义 CSS」，并确认对话框。使用「保存为新配置」和「切换配置」管理配置，或使用「导出所有设置」、「导入所有设置」及「保存到角色卡」分享和备份。
+
+> [!NOTE]
+> 导入备份或切换配置可能覆盖当前的字段、提示词和样式设置。角色卡数据不包含面板位置、调试模式等界面偏好设置。
+
+## 开发
+
+源代码位于 `dev`；`main` 存放构建后的扩展。使用 Node.js 22 和 pnpm 10 运行：
+
+```sh
+pnpm install
+pnpm build
+```
+
+构建工作流会将每次 `dev` 构建发布到 `testing`，并在提交消息包含发布标记时发布到 `main`。
+
+请到 [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues) 反馈问题。本项目采用 [Aladdin Free Public License（AFPL）](LICENSE)。

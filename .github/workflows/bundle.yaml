@@ -105,7 +105,7 @@ jobs:
           cp -r dist/ /tmp/deploy/
           cp manifest.json /tmp/deploy/
           cp -r i18n/ /tmp/deploy/ 2>/dev/null || true
-          cp README.md /tmp/deploy/ 2>/dev/null || true
+          cp README*.md /tmp/deploy/ 2>/dev/null || true
           cp LICENSE /tmp/deploy/ 2>/dev/null || true
 
       # ========== 7. 提交版本號更新到 dev（僅在 release 時）==========
