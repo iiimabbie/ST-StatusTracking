@@ -1,11 +1,21 @@
-[英文](README.md) | [繁体中文](README.zh-TW.md) | [简体中文](README.zh-CN.md)
+<div align="center">
+
+[English](README.md) · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
 
 # Status Tracking
 
-[![版本](https://img.shields.io/github/v/tag/iiimabbie/ST-StatusTracking?label=version)](https://github.com/iiimabbie/ST-StatusTracking/tags)
-[![许可：AFPL](https://img.shields.io/badge/license-AFPL-blue)](LICENSE)
+**SillyTavern 角色扮演的状态侧边面板**
 
 这是一个 SillyTavern 扩展，会要求 AI 在回复中提供状态信息，并显示在可折叠的侧边面板中。扩展读取 `myst` 代码块中的 YAML，并在显示消息时隐藏这些代码块。
+
+![Version](https://img.shields.io/github/manifest-json/v/iiimabbie/ST-StatusTracking?label=version&color=8a5cf6)
+![SillyTavern](https://img.shields.io/badge/SillyTavern-extension-e8a87c)
+![i18n](https://img.shields.io/badge/i18n-繁中%20·%20简中%20·%20EN-2ea44f)
+![License](https://img.shields.io/badge/license-AFPL-blue)
+
+[功能](#功能) · [安装](#安装) · [使用方法](#使用方法) · [开发](#开发)
+
+</div>
 
 ## 功能
 
@@ -34,4 +44,4 @@
 
 扩展直接使用 JavaScript ES 模块与 CSS，无需构建或安装依赖。
 
-请到 [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues) 反馈问题。本项目采用 [Aladdin Free Public License（AFPL）](LICENSE)。
+请到 [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues) 反馈问题。

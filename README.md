@@ -1,11 +1,21 @@
-[English](README.md) | [Traditional Chinese](README.zh-TW.md) | [Simplified Chinese](README.zh-CN.md)
+<div align="center">
+
+[English](README.md) · [繁體中文](README.zh-TW.md) · [简体中文](README.zh-CN.md)
 
 # Status Tracking
 
-[![Version](https://img.shields.io/github/v/tag/iiimabbie/ST-StatusTracking?label=version)](https://github.com/iiimabbie/ST-StatusTracking/tags)
-[![License: AFPL](https://img.shields.io/badge/license-AFPL-blue)](LICENSE)
+**A status side panel for SillyTavern roleplay**
 
 A SillyTavern extension that requests status information in AI replies and displays it in a collapsible side panel. It reads YAML from `myst` code blocks and hides those blocks in rendered messages.
+
+![Version](https://img.shields.io/github/manifest-json/v/iiimabbie/ST-StatusTracking?label=version&color=8a5cf6)
+![SillyTavern](https://img.shields.io/badge/SillyTavern-extension-e8a87c)
+![i18n](https://img.shields.io/badge/i18n-繁中%20·%20简中%20·%20EN-2ea44f)
+![License](https://img.shields.io/badge/license-AFPL-blue)
+
+[Features](#features) · [Installation](#installation) · [Usage](#usage) · [Development](#development)
+
+</div>
 
 ## Features
 
@@ -34,4 +44,4 @@ A SillyTavern extension that requests status information in AI replies and displ
 
 The extension uses JavaScript ES modules and CSS directly; no build step or package installation is required.
 
-Report problems in [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues). The project uses the [Aladdin Free Public License (AFPL)](LICENSE).
+Report problems in [Issues](https://github.com/iiimabbie/ST-StatusTracking/issues).
