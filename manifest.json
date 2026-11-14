@@ -3,10 +3,10 @@
   "loading_order": 120,
   "requires": [],
   "optional": [],
-  "js": "dist/index.js",
-  "css": "dist/index.css",
+  "js": "index.js",
+  "css": "style.css",
   "author": "iiimabbie",
-  "version": "0.6.2",
+  "version": "1.0.0",
   "homePage": "https://github.com/iiimabbie/ST-StatusTracking",
   "auto_update": true,
   "i18n": {
