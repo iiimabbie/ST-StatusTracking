@@ -123,7 +123,8 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
   .field-item { gap: 8px; padding: 8px; flex-wrap: wrap; }
 }
 @media screen and (max-width: 480px) {
-  .status-panel.left, .status-panel.right { width: 100vw; }
+  .status-panel.left { width: 100vw; left: 0 !important; right: auto !important; }
+  .status-panel.right { width: 100vw; right: 0 !important; left: auto !important; }
   .panel-content { padding: 12px 8px; }
   .panel-settings-container { min-width: 100%; padding: 10px; }
   .field_key { width: 100%; }
