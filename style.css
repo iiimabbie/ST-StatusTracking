@@ -107,30 +107,112 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
 .backup-actions { display: flex; gap: 8px; }
 .backup-actions .menu_button { flex-shrink: 0; font-size: 13px; width: auto; }
 .backup-actions .menu_button i { padding-right: 5px; }
-@media screen and (max-width: 767px) {
-  .status-panel.left, .status-panel.right { width: 280px; }
-  .panel-content { padding: 15px 10px; overflow-y: inherit; }
-  .collapse-toggle { width: 20px; height: 50px; top: 10px; transform: none; }
-  .collapse-toggle.right { left: 0; border-left: 0; border-right: 1px solid var(--SmartThemeBorderColor); border-radius: 0 8px 8px 0; }
-  .collapse-toggle.right.collapsed { left: auto; right: 0; border-radius: 8px 0 0 8px; }
-  .collapse-toggle.left { right: 0; border-right: 0; border-left: 1px solid var(--SmartThemeBorderColor); border-radius: 8px 0 0 8px; }
-  .collapse-toggle.left.collapsed { right: auto; left: 0; border-radius: 0 8px 8px 0; }
-  .panel-settings-container { min-width: 300px; padding: 12px; }
-  .setting-item.gal-settings, .color-picker-group, .backup-header, .backup-actions { flex-direction: column; }
-  .setting-label, .setting-select, .preset-select-wrapper { width: 100%; }
-  .panel-actions, .field-actions, .prompt-actions { flex-direction: column; }
-  .prompt-actions > .menu_button, .backup-actions, .backup-actions .menu_button { width: 100%; }
-  .field-item { gap: 8px; padding: 8px; flex-wrap: wrap; }
+@media screen and (max-width:1024px) {
+  .panel-settings-container { min-width:350px }
+  .prompt-editor-container { min-width:400px;max-width:600px }
+  .setting-item { margin-bottom:15px }
 }
-@media screen and (max-width: 480px) {
-  .status-panel.left { width: 100vw; left: 0 !important; right: auto !important; }
-  .status-panel.right { width: 100vw; right: 0 !important; left: auto !important; }
-  .panel-content { padding: 12px 8px; }
-  .panel-settings-container { min-width: 100%; padding: 10px; }
-  .field_key { width: 100%; }
-  .field-left { min-width: 120px; }
-  .news-child-row { flex-direction: column; align-items: flex-start; }
-  .field-textarea { width: 100%; font-size: 11px; }
-  .progress-preview { flex-direction: column; gap: 8px; }
-  .preview-label, .preview-bar-container { width: 100%; }
+@media screen and (max-width:767px) {
+  .status-panel.left,.status-panel.right { width:280px }
+  .panel-content { padding:15px 10px;overflow-y:inherit }
+  .fixed-info-section { gap:12px;padding:0 5px }
+  .info-item { padding:12px }
+  .panel-header h3 { font-size:18px }
+  .info-text { font-size:13px }
+  .news-header { font-size:15px }
+  .news-title { font-size:13px }
+  .news-content { font-size:12px }
+  .status-name { font-size:14px;min-width:70px;max-width:100px }
+  .notes-section { margin-top:12px;padding:0 8px }
+  .notes-content { font-size:12px;padding:10px }
+  .collapse-toggle { width:20px;height:50px;top:10px;transform:none }
+  .collapse-toggle.right { left:0;border-left:none;border-right:1px solid var(--SmartThemeBorderColor);border-radius:0 8px 8px 0 }
+  .collapse-toggle.right.collapsed { left:auto;right:0;border-left:1px solid var(--SmartThemeBorderColor);border-right:none;border-radius:8px 0 0 8px }
+  .collapse-toggle.left { right:0;border-right:none;border-left:1px solid var(--SmartThemeBorderColor);border-radius:8px 0 0 8px }
+  .collapse-toggle.left.collapsed { right:auto;left:0;border-right:1px solid var(--SmartThemeBorderColor);border-left:none;border-radius:0 8px 8px 0 }
+  .panel-settings-container { min-width:300px;padding:12px }
+  .settings-title { font-size:16px }
+  .setting-item.gal-settings { flex-direction:column;gap:8px }
+  .setting-label { width:100% }
+  .setting-select { width:100%;max-width:100% }
+  .tab-button { padding:10px 15px;font-size:14px }
+  .field-item { gap:8px;padding:8px }
+  .field-inputs { flex-direction:column;gap:6px }
+  .field-type-select { width:100% }
+  .field-left { min-width:150px }
+  .news-child-label { min-width:124px }
+  .field-textarea { font-size:12px }
+  .prompt-editor-container { min-width:280px;max-width:100%;padding:12px }
+  .prompt-textarea { font-size:12px }
+  .css-textarea { font-size:12px;min-height:250px }
+  .color-picker-group { flex-direction:column;gap:12px }
+  .panel-actions,.field-actions,.prompt-actions { flex-direction:column;gap:8px }
+  .panel-actions .menu_button,.field-actions>.menu_button,.prompt-actions>.menu_button { width:100% }
+  .backup-header { flex-direction:column;align-items:flex-start;gap:10px }
+  .backup-actions { width:100%;flex-direction:column }
+  .backup-actions .menu_button { width:100% }
+}
+@media screen and (max-width:480px) {
+  .status-panel.left { width:100vw;left:0!important;right:auto!important }
+  .status-panel.right { width:100vw;right:0!important;left:auto!important }
+  .panel-content { padding:12px 8px;overflow-y:inherit }
+  .fixed-info-section { gap:10px;padding:0 }
+  .info-item { padding:10px }
+  .news-section { padding:12px }
+  .custom-fields-section { padding:0 5px }
+  .status-list { padding:12px }
+  .panel-header h3 { font-size:16px }
+  .panel-header { margin-bottom:15px;padding-bottom:12px }
+  .info-text { font-size:12px }
+  .info-icon { font-size:16px }
+  .news-header { font-size:14px }
+  .news-title { font-size:12px }
+  .news-content { font-size:11px }
+  .status-name { font-size:13px;min-width:60px;max-width:80px }
+  .status-item { gap:10px;padding:8px 0 }
+  .notes-section { margin-top:10px;padding:0 6px }
+  .notes-content { font-size:11px;padding:8px }
+  .progress-bar-container { height:14px }
+  .progress-text { font-size:10px }
+  .collapse-toggle { width:24px;height:50px;font-size:12px;top:10px;transform:none }
+  .collapse-toggle.right { left:0;border-left:none;border-right:1px solid var(--SmartThemeBorderColor);border-radius:0 8px 8px 0 }
+  .collapse-toggle.right.collapsed { left:auto;right:0;border-left:1px solid var(--SmartThemeBorderColor);border-right:none;border-radius:8px 0 0 8px }
+  .collapse-toggle.left { right:0;border-right:none;border-left:1px solid var(--SmartThemeBorderColor);border-radius:8px 0 0 8px }
+  .collapse-toggle.left.collapsed { right:auto;left:0;border-right:1px solid var(--SmartThemeBorderColor);border-left:none;border-radius:0 8px 8px 0 }
+  .panel-settings-container { min-width:100%;padding:10px }
+  .settings-title { font-size:15px }
+  .setting-item { margin-bottom:12px }
+  .setting-label { font-size:14px }
+  .setting-select { max-width:100% }
+  .tab-button { padding:8px 10px;font-size:13px }
+  .field-list-container { padding:8px }
+  .field-item { padding:6px }
+  .drag-handle { font-size:14px }
+  .field-delete { font-size:16px }
+  .text_pole { padding:5px 8px;font-size:13px }
+  .field_key { width:100% }
+  .fixed-field-item { padding:10px }
+  .field-left { min-width:120px }
+  .news-child-row { flex-direction:column;align-items:flex-start;gap:6px }
+  .news-child-label { min-width:auto;width:100% }
+  .field-textarea { width:100%;font-size:11px;max-height:100px }
+  .field-name { font-size:13px }
+  .field-checkbox { width:16px;height:16px }
+  .prompt-editor-container { padding:10px }
+  .prompt-field label { font-size:13px }
+  .prompt-textarea { min-height:50px;font-size:11px }
+  .css-textarea { font-size:11px;min-height:200px }
+  .css-editor-tips { font-size:11px }
+  .progress-preview { flex-direction:column;gap:8px }
+  .preview-label,.preview-bar-container { width:100% }
+  .color-input { height:35px }
+  .color-value { font-size:11px }
+  .toggles-container { gap:10px }
+  .toggle-item label { font-size:13px }
+  .links-container { flex-direction:column }
+  .link-button { min-width:100% }
+}
+@media screen and (max-width: 1000px) {
+  .status-panel.left:not(.collapsed), .status-panel.right:not(.collapsed) { height: calc(100dvh - var(--topBarBlockSize)) !important; }
+  .status-panel .panel-content { overflow-y: auto !important; }
 }
