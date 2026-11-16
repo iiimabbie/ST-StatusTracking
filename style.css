@@ -198,7 +198,7 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
 }
 @media screen and (max-width:767px) {
   .status-panel.left,.status-panel.right { width:280px }
-  .panel-content { padding:15px 10px;overflow-y:inherit }
+  .panel-content { padding:15px 10px }
   .fixed-info-section { gap:12px;padding:0 5px }
   .info-item { padding:12px }
   .panel-header h3 { font-size:18px }
@@ -239,7 +239,7 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
 @media screen and (max-width:480px) {
   .status-panel.left { width:100vw;left:0!important;right:auto!important }
   .status-panel.right { width:100vw;right:0!important;left:auto!important }
-  .panel-content { padding:12px 8px;overflow-y:inherit }
+  .panel-content { padding:12px 8px }
   .fixed-info-section { gap:10px;padding:0 }
   .info-item { padding:10px }
   .news-section { padding:12px }
@@ -298,5 +298,4 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
 }
 @media screen and (max-width: 1000px) {
   .status-panel.left:not(.collapsed), .status-panel.right:not(.collapsed) { height: calc(100dvh - var(--topBarBlockSize)) !important; }
-  .status-panel .panel-content { overflow-y: auto !important; }
 }
