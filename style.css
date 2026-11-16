@@ -180,7 +180,7 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
 .css-editor-actions { display: flex; gap: 8px; justify-content: flex-end; margin-bottom: 5px; }
 .css-textarea { width: 100%; min-height: 300px; max-height: 500px; font-family: monospace; font-size: 13px; line-height: 1.6; padding: 12px; border: 1px solid var(--SmartThemeBorderColor); border-radius: 6px; background: var(--SmartThemeBlurTintColor); color: var(--SmartThemeBodyColor); resize: vertical; }
 .css-editor-tips, .backup-description { font-size: 12px; color: var(--SmartThemeQuoteColor); margin-top: 8px; }
-.backup-description { margin-top: 0; line-height: 0; }
+.backup-description { margin-top: 0; line-height: 1.4; }
 .css-editor-tips { line-height: 1.4; padding: 8px; background: rgba(0,0,0,.1); border-radius: 4px; }
 .preset-select-wrapper { display: flex; gap: 6px; align-items: center; width: 75%; }
 .preset-select-wrapper .menu_button_icon { flex: none; width: auto; }
