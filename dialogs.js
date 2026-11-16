@@ -61,7 +61,7 @@ export async function openFieldSettings() {
   root.addEventListener('change', e => {
     if (e.target.dataset.fixed) { enabled[e.target.dataset.fixed] = e.target.checked; renderFixed(); }
   });
-  const popup = new Popup(root, POPUP_TYPE.TEXT, '', { wide: true, okButton: true, cancelButton: true });
+  const popup = new Popup(root, POPUP_TYPE.TEXT, '', { wide: true, allowVerticalScrolling: true, okButton: true, cancelButton: true });
   const pending = popup.show();
   $(list).sortable({ handle: '.drag-handle', update() {
     const order = [...list.children].map(row => row.dataset.id);
@@ -224,7 +224,7 @@ export async function openPanelSettings() {
       catch (error) { console.error('[myst] save character failed', error); toastr.error(t('儲存失敗'), t('錯誤')); }
     }
   });
-  const popup = new Popup(root, POPUP_TYPE.TEXT, '', { wide: true, okButton: true, cancelButton: true });
+  const popup = new Popup(root, POPUP_TYPE.TEXT, '', { wide: true, allowVerticalScrolling: true, okButton: true, cancelButton: true });
   if (await popup.show() !== POPUP_RESULT.AFFIRMATIVE) return;
   const changedChat = temp.progress_color_low !== settings.progress_color_low || temp.progress_color_high !== settings.progress_color_high || temp.custom_css !== settings.custom_css;
   Object.assign(settings, temp);
