@@ -6,6 +6,8 @@ export function escapeHTML(value) {
   return String(value ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 }
 
+const AUTHOR_PORTFOLIO_URL = 'https://classy-christmas-5c1.notion.site/Rainori-4188b3769594807babe7d3fd4074d118';
+
 let drawer;
 let panel;
 export function initUI() {
@@ -17,9 +19,13 @@ export function initUI() {
     <div class="toggle-item"><input id="status-tracking_enabled" type="checkbox" ${settings.panel_enabled ? 'checked' : ''}><label for="status-tracking_enabled">${t('啟用狀態面板')}</label></div>
     <div class="toggle-item"><input id="status-tracking_debug" type="checkbox" ${settings.debug_mode ? 'checked' : ''}><label for="status-tracking_debug">${t('Debug 模式')}</label></div></div><hr class="sysHR">
     <div class="links-container"><a href="https://github.com/iiimabbie" target="_blank" rel="noopener" class="menu_button link-button"><i class="fa-brands fa-github"></i> GitHub</a>
-    <a href="https://discord.gg/pWynG3aCgs" target="_blank" rel="noopener" class="menu_button link-button"><i class="fa-brands fa-discord"></i> Discord</a></div></div></div></div>`;
+    <a href="https://discord.gg/pWynG3aCgs" target="_blank" rel="noopener" class="menu_button link-button"><i class="fa-brands fa-discord"></i> Discord</a>
+    <span class="status-tracking-version-info"></span></div></div></div></div>`;
   drawer.querySelector('#status-tracking_enabled').onchange = e => { settings.panel_enabled = e.target.checked; changed(); };
   drawer.querySelector('#status-tracking_debug').onchange = e => { settings.debug_mode = e.target.checked; changed(); };
+  fetch(new URL('manifest.json', import.meta.url)).then(r => r.json()).then(m => {
+    drawer.querySelector('.status-tracking-version-info').innerHTML = `v${m.version} © <a href="${AUTHOR_PORTFOLIO_URL}" target="_blank" rel="noopener">${m.author}</a>`;
+  });
   document.querySelector('#extensions_settings2').append(drawer);
   panel = document.createElement('div');
   panel.id = 'status-tracking-panel';
