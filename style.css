@@ -198,6 +198,16 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
   .prompt-editor-container { min-width:400px;max-width:600px }
   .setting-item { margin-bottom:15px }
 }
+@media screen and (max-width:1000px) {
+  .status-panel.left { left:0!important;right:auto!important }
+  .status-panel.right { right:0!important;left:auto!important }
+  .status-panel.left:not(.collapsed), .status-panel.right:not(.collapsed) { height: calc(100dvh - var(--topBarBlockSize)) !important; }
+  .collapse-toggle { width:20px;height:50px;top:10px;transform:none }
+  .collapse-toggle.right { left:0;border-left:none;border-right:1px solid var(--SmartThemeBorderColor);border-radius:0 8px 8px 0 }
+  .collapse-toggle.right.collapsed { left:auto;right:0;border-left:1px solid var(--SmartThemeBorderColor);border-right:none;border-radius:8px 0 0 8px }
+  .collapse-toggle.left { right:0;border-right:none;border-left:1px solid var(--SmartThemeBorderColor);border-radius:8px 0 0 8px }
+  .collapse-toggle.left.collapsed { right:auto;left:0;border-right:1px solid var(--SmartThemeBorderColor);border-left:none;border-radius:0 8px 8px 0 }
+}
 @media screen and (max-width:767px) {
   .status-panel.left,.status-panel.right { width:280px }
   .panel-content { padding:15px 10px }
@@ -211,11 +221,6 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
   .status-name { font-size:14px;min-width:70px;max-width:100px }
   .notes-section { margin-top:12px;padding:0 8px }
   .notes-content { font-size:12px;padding:10px }
-  .collapse-toggle { width:20px;height:50px;top:10px;transform:none }
-  .collapse-toggle.right { left:0;border-left:none;border-right:1px solid var(--SmartThemeBorderColor);border-radius:0 8px 8px 0 }
-  .collapse-toggle.right.collapsed { left:auto;right:0;border-left:1px solid var(--SmartThemeBorderColor);border-right:none;border-radius:8px 0 0 8px }
-  .collapse-toggle.left { right:0;border-right:none;border-left:1px solid var(--SmartThemeBorderColor);border-radius:8px 0 0 8px }
-  .collapse-toggle.left.collapsed { right:auto;left:0;border-right:1px solid var(--SmartThemeBorderColor);border-left:none;border-radius:0 8px 8px 0 }
   .panel-settings-container { min-width:300px;padding:12px }
   .settings-title { font-size:16px }
   .setting-item.gal-settings { flex-direction:column;gap:8px }
@@ -239,8 +244,7 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
   .backup-actions .menu_button { width:100% }
 }
 @media screen and (max-width:480px) {
-  .status-panel.left { width:100vw;left:0!important;right:auto!important }
-  .status-panel.right { width:100vw;right:0!important;left:auto!important }
+  .status-panel.left,.status-panel.right { width:100vw }
   .panel-content { padding:12px 8px }
   .fixed-info-section { gap:10px;padding:0 }
   .info-item { padding:10px }
@@ -260,11 +264,7 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
   .notes-content { font-size:11px;padding:8px }
   .progress-bar-container { height:14px }
   .progress-text { font-size:10px }
-  .collapse-toggle { width:24px;height:50px;font-size:12px;top:10px;transform:none }
-  .collapse-toggle.right { left:0;border-left:none;border-right:1px solid var(--SmartThemeBorderColor);border-radius:0 8px 8px 0 }
-  .collapse-toggle.right.collapsed { left:auto;right:0;border-left:1px solid var(--SmartThemeBorderColor);border-right:none;border-radius:8px 0 0 8px }
-  .collapse-toggle.left { right:0;border-right:none;border-left:1px solid var(--SmartThemeBorderColor);border-radius:8px 0 0 8px }
-  .collapse-toggle.left.collapsed { right:auto;left:0;border-right:1px solid var(--SmartThemeBorderColor);border-left:none;border-radius:0 8px 8px 0 }
+  .collapse-toggle { width:24px;font-size:12px }
   .panel-settings-container { min-width:100%;padding:10px }
   .settings-title { font-size:15px }
   .setting-item { margin-bottom:12px }
@@ -297,7 +297,4 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
   .toggle-item label { font-size:13px }
   .links-container { flex-direction:column }
   .link-button { min-width:100% }
-}
-@media screen and (max-width: 1000px) {
-  .status-panel.left:not(.collapsed), .status-panel.right:not(.collapsed) { height: calc(100dvh - var(--topBarBlockSize)) !important; }
 }
