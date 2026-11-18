@@ -11,7 +11,7 @@
 ![Version](https://img.shields.io/github/manifest-json/v/iiimabbie/ST-StatusTracking?label=version&color=8a5cf6)
 ![SillyTavern](https://img.shields.io/badge/SillyTavern-extension-e8a87c)
 ![i18n](https://img.shields.io/badge/i18n-繁中%20·%20简中%20·%20EN-2ea44f)
-![License](https://img.shields.io/badge/license-AFPL-blue)
+![License](https://img.shields.io/badge/license-CC%20BY--NC--ND%204.0-lightgrey)
 
 [功能](#功能) · [安装](#安装) · [使用方法](#使用方法) · [开发](#开发)
 
