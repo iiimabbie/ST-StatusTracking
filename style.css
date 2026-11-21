@@ -45,8 +45,8 @@
 .field-inputs { display:flex; gap:8px; }
 .field-name-input,.field-desc-input { flex:1; }
 .field-type-select { width:100px; flex-shrink:0; }
-.text_pole { background-color:var(--SmartThemeBlurTintColor); }
-.text_pole:focus { outline:none; border-color:var(--SmartThemeQuoteColor); }
+:where(.field-list-wrapper, .panel-settings-container) .text_pole { background-color:var(--SmartThemeBlurTintColor); }
+:where(.field-list-wrapper, .panel-settings-container) .text_pole:focus { outline:none; border-color:var(--SmartThemeQuoteColor); }
 .field-delete { cursor:pointer; color:#ef4444; font-size:18px; transition:color .2s; }
 .field-delete:hover { color:#dc2626; }
 .toggle-item input[type=checkbox] { cursor:pointer; }
@@ -151,7 +151,7 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
 .field-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 10px; }
 .field-item { display: flex; align-items: center; gap: 10px; padding: 10px; margin-bottom: 10px; background: var(--SmartThemeBlurTintColor); border: 1px solid var(--SmartThemeBorderColor); border-radius: 4px; }
 .drag-handle { cursor: grab; color: var(--SmartThemeQuoteColor); font-size: 16px; }
-.text_pole { padding: 6px 10px; font-size: 14px; color: var(--SmartThemeBodyColor); background: var(--SmartThemeBlurTintColor); border: 1px solid var(--SmartThemeBorderColor); border-radius: 4px; }
+:where(.field-list-wrapper, .panel-settings-container) .text_pole { padding: 6px 10px; font-size: 14px; color: var(--SmartThemeBodyColor); background: var(--SmartThemeBlurTintColor); border: 1px solid var(--SmartThemeBorderColor); border-radius: 4px; }
 .field_key { width: 25%; }
 .field_value { width: 100%; min-width: 0; }
 .field-type { display: flex; flex-direction: column; align-items: center; white-space: nowrap; }
@@ -275,7 +275,7 @@ details:not([open]) > summary i { transform: rotate(-90deg); }
   .field-item { padding:6px }
   .drag-handle { font-size:14px }
   .field-delete { font-size:16px }
-  .text_pole { padding:5px 8px;font-size:13px }
+  :where(.field-list-wrapper, .panel-settings-container) .text_pole { padding:5px 8px;font-size:13px }
   .field_key { width:100% }
   .fixed-field-item { padding:10px }
   .field-left { min-width:120px }
